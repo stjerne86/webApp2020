@@ -1,0 +1,61 @@
+<!----------------------------------------------------------------------------------------
+    ---------------------------- Helle, Louise, Maja -------------------------------------
+------------------------------------------------------------------------------------------>
+<!DOCTYPE html>
+<html lang="dk">
+
+<head>
+    <meta charset="utf-8" />
+    <title>WebApp | Selskabslege</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sæt fut i din fest med spAqz">
+    <meta name="keywords" contents="festspil, festlege, druklege, alkohol, hygge">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel='icon' href='favicon.ico' type='image/x-icon'>
+    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <!-- Style sheets -->
+    <!-- <link href="css/reset.css" rel="stylesheet"> -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body onhashchange="pageChange()">
+    <header>
+        <nav id="nav-menu" class="nav-menu hide">
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <ul class="menu">
+
+                <li><a href="#addPredefinded">Tilføj spørsgsmål til databasen</a></li>
+                <li><a href="#myQuestions">Mine gemte spørgsmål</a></li>
+                <li><a href="#myPage">Min profil</a></li>
+                <li><a href="#rate">Giv en anmeldelse</a></li>
+                <li><a href="#changes">Foreslå ændringer</a></li>
+                <li onclick="logout()">Log ud</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="content"></section>
+
+
+    </main>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <script src="firebase-config.js"></script>
+
+
+    <!-- main javaScript file, works like a module -->
+    <script src="main.js" type="module"></script>
+</body>
+
+
+
+<!-- TO JAVASCRIPT -->
+
+
+
+</html>

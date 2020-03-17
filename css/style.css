@@ -1,0 +1,907 @@
+/*  ------------------------------------------------------------------------
+ ---------------------------- Helle, Louise & Maja -------------------------
+ --------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ________________________________________________________________________________________
+ css variables
+-----------------------------------------------------------------------------------------*/
+:root {
+    /* Color */
+    --menuBackground: #333;
+    --menuFontColor: #FFF;
+    --menuHoverColor: var(--secundary_color_dark);
+    --menuHoverFontColor: #041a1f;
+    --background: rgb(222,218,91);
+    background: linear-gradient(90deg, rgba(222,218,91,1) 0%, rgba(49,215,104,1) 0%, rgba(0,212,255,1) 100%);;
+    --secundary_color_dark: rgb(158, 203, 221);
+    --secundary_color_light: rgb(255, 234, 100);
+    --border_light: 5px solid var(--secundary_color_light);
+    --border_dark: 5px solid var(--secundary_color_dark);
+    --border_radius: 25px;
+    --border_radius_square: 5px;
+    --standardWidth: 75%;
+    --font-family: 'Raleway', Arial, sans-serif;
+    --font_color_light: #FFF;
+    --font_color_dark: rgb(5, 5, 5);
+    --yellow: rgb(141, 214, 153);
+}
+
+/* ________________________________________________________________________________________
+html and body
+-----------------------------------------------------------------------------------------*/
+html {
+    color: var(--font_color_dark);
+    background-color: var(--background);
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: var(--font-family);
+    height: 100%;
+    text-align: center;
+    width: 100%;
+    font-weight: 200;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.standardWidth {
+    width: var(--standardWidth);
+    margin: 0 auto;
+}
+
+/* ________________________________________________________________________________________
+Font
+-----------------------------------------------------------------------------------------*/
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+.bold {
+    margin-top: 2em;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: var(--font_color_dark);
+}
+
+.yellowText {
+    color: var(--secundary_color_light);
+    font-weight: bold;
+}
+
+/* ________________________________________________________________________________________
+Navigation - menu
+-----------------------------------------------------------------------------------------*/
+/* Styling of the menu button */
+.nav-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: var(--menuBackground);
+    text-align: center;
+}
+
+.nav-menu li a,
+.nav-menu li {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--menuFontColor);
+    font-family: var(--font-family);
+    font-size: 18px;
+}
+
+.nav-menu li a:hover,
+.nav-menu li:hover,
+.nav-menu .menu-btn:hover {
+    cursor: pointer;
+    background-color: var(--menuHoverColor);
+    color: var(--menuHoverFontColor);
+}
+
+
+/* menu */
+.nav-menu .menu {
+    clear: both;
+    max-height: 0px;
+    transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+.nav-menu .menu-icon {
+    cursor: pointer;
+    display: block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+}
+
+.nav-menu .navicon {
+    background: var(--menuBackground);
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+}
+
+.nav-menu .navicon:before,
+.nav-menu .navicon:after {
+    background: var(--menuBackground);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.nav-menu .navicon:before {
+    top: 5px;
+}
+
+.nav-menu .navicon:after {
+    top: -5px;
+}
+
+/* menu btn - how the three lines changes into an x*/
+.nav-menu .menu-btn {
+    display: none;
+}
+
+.nav-menu .menu-btn:checked~.menu {
+    max-height: 540px;
+}
+
+.nav-menu .menu-btn:checked~.menu-icon .navicon {
+    background: transparent;
+}
+
+.nav-menu .menu-btn:checked~.menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.nav-menu .menu-btn:checked~.menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.nav-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+.nav-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+
+
+.goBack {
+    width: 2em;
+    height: 2em;
+    position: fixed;
+    z-index: 5;
+    left: 2vh;
+    top: 2vh;
+    transform: rotate(-90deg);
+
+}
+
+/* ________________________________________________________________________________________
+flexcontainer
+-----------------------------------------------------------------------------------------*/
+.flexcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* ________________________________________________________________________________________
+buttons
+-----------------------------------------------------------------------------------------*/
+.btn {
+    border-radius: var(--border_radius);
+    border: var(--border_light);
+    background: var(--secundary_color_light);
+    color: var(--font_color_dark);
+    font-weight: bold;
+    letter-spacing: .1em;
+    width: auto;
+    margin: 1.5em auto 1em;
+    height: auto;
+    font-size: 1em;
+    padding: .5em 1em;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+.btnSettings {
+    margin: 4em auto 1em;
+}
+
+.collectionOfItems {
+    background: var(--secundary_color_dark);
+    width: var(--standardWidth);
+    padding: 1em;
+    border: var(--border_light);
+    border-radius: var(--border_radius);
+    color: var(--font_color_light);
+    cursor: pointer;
+    margin: 2em auto;
+}
+
+.fixedBottom {
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.arrow {
+    width: 1em;
+    height: 1em;
+    float: right;
+    margin-right: 1em;
+    transform: rotate(0deg);
+}
+
+/* ________________________________________________________________________________________
+pages
+-----------------------------------------------------------------------------------------*/
+.page {
+    display: none;
+    /*min heigh is screen heigh minus height of tab and top bar */
+    min-height: 100vh;
+    background: var(--light-grey);
+    animation: fadeIn 0.4s;
+}
+
+/* ---------- home / warning page ---------- */
+#home {
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 25%;
+}
+
+#warning {
+    opacity: 80%;
+    width: var(--standardWidth);
+}
+
+/* ---------- addQuestions page ---------- */
+#appendUserQuestions {
+    margin: 2%;
+}
+
+/* #addedQuestionsArticle {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    background-color: var(--secundary_color_light);
+} */
+
+#addedQuestions {
+    background-color: var(--secundary_color_light);
+    border: var(--border_light);
+    border-radius: var(--border_radius);
+    padding: .3em;
+}
+
+[for=addedQuestions] {
+    position: fixed;
+    z-index: 5;
+    right: 2vh;
+    top: 2vh;
+}
+
+/* ---------- settings ---------- */
+#myText {
+    display: block;
+    top: 30%;
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 0 0 0 1em;
+    margin: 0 auto;
+
+}
+
+#text-to-copy {
+    position: absolute;
+    margin-left: 35%;
+    margin-top: -8%;
+
+
+}
+
+.idButton {
+    display: inline-block;
+    background-color: var(--secundary_color_light);
+    border-radius: 3px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 4px 2px;
+}
+
+/* kopi knap */
+
+#copy_icon {
+    position: absolute;
+    margin-left: 200px;
+    margin-top: -28px;
+    z-index: 2;
+}
+
+
+/* slider med Antal runder */
+
+#valueText {
+
+    color: white;
+    font-weight: bold;
+    margin-top: 40px;
+
+}
+
+.slidecontainer {
+    display: block;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 30px;
+}
+
+.box-minmax {
+    margin-top: 30px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.box-minmax span:first-child {
+    margin-left: 10px;
+}
+
+.range-slider {
+    margin-top: 30vh;
+}
+
+.rs-range {
+    margin-top: 29px;
+    width: 300px;
+    -webkit-appearance: none;
+}
+
+.rs-range:focus {
+    outline: none;
+}
+
+.rs-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    box-shadow: none;
+    background: #ffffff;
+    border-radius: 0px;
+    border: 0px solid #010101;
+}
+
+.rs-range::-moz-range-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    box-shadow: none;
+    background: #ffffff;
+    border-radius: 0px;
+    border: 0px solid #010101;
+}
+
+.rs-range::-webkit-slider-thumb {
+    box-shadow: none;
+    border: 0px solid #ffffff;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    height: 42px;
+    width: 22px;
+    border-radius: 22px;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -20px;
+}
+
+.rs-range::-moz-range-thumb {
+    box-shadow: none;
+    border: 0px solid #ffffff;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    height: 42px;
+    width: 22px;
+    border-radius: 22px;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -20px;
+}
+
+.rs-range::-moz-focus-outer {
+    border: 0;
+}
+
+.rs-label {
+    position: relative;
+    transform-origin: center center;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 0px;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+    margin-top: 20px;
+    margin-left: -8px;
+    left: attr(value);
+    color: #fff;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 15px;
+}
+
+.rs-label::after {
+    content: "Runder";
+    display: block;
+    font-size: 8px;
+    letter-spacing: 0.07em;
+    margin-top: -2px;
+}
+
+/*  Slut slider med Antal runder  */
+
+/*  Toggle switch Sprog  */
+.toggleLang input {
+    display: none;
+}
+
+/* The container and background */
+.toggleLang {
+    position: absolute;
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    left: 39%;
+    top: 45%
+}
+
+input:checked+.sliderLang:before {
+    transform: translateX(50px);
+}
+
+.sliderLang:after {
+    position: absolute;
+    content: "DA";
+    top: 6px;
+    right: 10px;
+    color: var(--font_color_dark);
+    font-size: 0.9em;
+    font-family: sans-serif;
+}
+
+/* "ON" Text */
+input:checked+.sliderLang:after {
+    content: "EN";
+    font-family: sans-serif;
+    font-family: sans-serif;
+    left: -30px;
+    color: var(--font_color_dark);
+
+}
+
+.sliderLang {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(242, 243, 243);
+    border: 1px solid rgba(29, 150, 150, 0.133);
+    border-radius: 30px;
+    transition: all 0.4;
+    opacity: 70%;
+
+}
+
+/* The sliding button */
+.sliderLang:before {
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 24px;
+    left: 2px;
+    top: 2px;
+    background-color: rgb(28, 31, 29);
+    border-radius: 24px;
+    transition: all 0.4s;
+
+}
+
+/* On checked */
+input:checked+.sliderLang {
+    background-color: var(--secundary_color_light);
+}
+
+/* Slut toggle switch Sprog */
+
+/* ---------- settings ---------- */
+#infoLabel {
+    background-image: url(../img/info_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 5vh;
+    right: 5vh;
+    width: 5vh;
+    height: 5vh;
+}
+
+.addIcon {
+    background-image: url(../img/plus_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: .3em;
+    width: 5vh;
+    height: 5vh;
+    margin: 1.5em auto 1em;
+    font-size: 1em;
+    border-radius: var(--border_radius);
+    cursor: pointer;
+}
+
+#rules {
+    background-color: var(--menuBackground);
+    color: var(--menuFontColor);
+    min-height: 50vh;
+    position: absolute;
+    z-index: 999;
+    top: 15%;
+    width: 95%;
+}
+
+/*----- This is not active in version 1.0 ------*/
+/* #addLabel {
+    background-image: url(../img/plus_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    width: 20px;
+    height: 22px;
+} */
+
+#gameContainer {
+    --n: 1;
+    display: flex;
+    align-items: center;
+    overflow-y: hidden;
+    width: 100%;
+    width: calc(var(--n)*100%);
+    height: 100vw;
+    max-height: 100vh;
+    transform: translate(calc(var(--i, 0)/var(--n)*-100%));
+    z-index: -2;
+
+}
+
+#gameContainer article {
+    width: 100%;
+    width: calc(100%/var(--n));
+    user-select: none;
+    pointer-events: none;
+    height: 50vh;
+    margin: .7%;
+    padding-top: 2%;
+    overflow: hidden;
+}
+
+/* sandt eller falst */
+.pfF2l2zwYDqcVCIjMlNr {
+    background-color: tomato;
+    opacity: 90%;
+}
+
+/* Quiz */
+.MEF7ah2clInWlmgNpg6M {
+    background-color: steelblue;
+    opacity: 90%;
+}
+
+/* Jeg har aldrig... */
+.LhhaSALqCbhu4upFC8l4 {
+    background-color: palegreen;
+    opacity: 90%;
+}
+
+/* Kategorien er... */
+.mPfpbsdleHCjmhZhbUsQ {
+    background-color: mediumpurple;
+    opacity: 90%;
+}
+
+/* Sanshed eller konsekvens */
+.vRD8Spl5fQ4AfTifPtRq {
+    background-color: hotpink;
+    opacity: 90%;
+}
+
+/* Mest tilbøjelig til... */
+.xVFJqPIXWykcMf1DcqfU {
+    background-color: var(--yellow);
+    opacity: 90%;
+}
+
+/* Ordforklaring for hold */
+.xsbZmSDp9MsHyzaPUAe1 {
+    background-color: salmon;
+    opacity: 90%;
+}
+
+/* Tip en 13'er */
+.gI63nouOSvEvUXvmu0AE {
+    background-color: wheat;
+    opacity: 90%;
+}
+
+/* ---------- animations on pages ---------- */
+/* fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/*  spinner  */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ________________________________________________________________________________________
+loader /spinner styling
+this part is not active in version 1.0
+-----------------------------------------------------------------------------------------*/
+#loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999999;
+    overflow: hidden;
+    background: var(--secundary_color_light);
+    text-align: center;
+}
+
+.spinner {
+    border: 5px solid var(--secundary_color_dark);
+    border-radius: 50%;
+    border-top: 5px solid var(--secundary_color_light);
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 1s linear infinite;
+    /* Safari */
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* ________________________________________________________________________________________
+visebility
+-----------------------------------------------------------------------------------------*/
+.hide {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+
+.displayNone {
+    display: none;
+}
+
+.displayBlock {
+    display: block;
+    width: 100%;
+}
+
+/* ________________________________________________________________________________________
+input fields and select boxes
+-----------------------------------------------------------------------------------------*/
+.inputfield {
+    width: var(--standardWidth);
+    padding: 1em 0;
+    margin: .5em auto;
+    display: block;
+    background: var(--secundary_color_dark);
+    color: var(--menuFontColor);
+    border-radius: var(--border_radius_square);
+    border: var(--border_dark);
+    font-size: 1em;
+}
+
+.smallInputfield {
+    width: 35%;
+    padding: 1em;
+    background: var(--secundary_color_dark);
+    color: var(--menuFontColor);
+    border-radius: var(--border_radius_square);
+    /* border: var(--border_li); */
+    font-size: 1em;
+}
+
+/* ________________________________________________________________________________________
+authentication styling
+this part is not active in version 1.0
+-----------------------------------------------------------------------------------------*/
+/* #firebaseui-auth-container {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.firebaseui-container {
+    font-family: var(--font-family);
+    font: 16px var(--font-family);
+}
+
+.firebaseui-title {
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.mdl-button--raised.mdl-button--colored,
+.mdl-button--raised.mdl-button--colored:active,
+.mdl-button--raised.mdl-button--colored:hover {
+    background: var(--green);
+    color: #fff;
+    border-radius: 0;
+}
+
+.firebaseui-textfield.mdl-textfield .firebaseui-label::after {
+    background-color: var(--green);
+} */
+
+
+/* ________________________________________________________________________________________
+Checkbox
+-----------------------------------------------------------------------------------------*/
+.label {
+    display: block;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkboxNotCheked {
+    background: var(--secundary_color_dark);
+    border: 1px solid #cacece;
+    color: var(--menuFontColor);
+    padding: 1.2em .3em;
+    border-radius: var(--border_radius_square);
+    display: block;
+    margin: 0 auto;
+    width: var(--standardWidth);
+
+}
+
+.checkboxChecked {
+    /* box-shadow: 0px 10px 14px -7px var(--secundary_color_light); */
+    background: var(--secundary_color_light);
+    border: 1px solid #cacece;
+    border-radius: var(--border_radius_square);
+    width: var(--standardWidth);
+    margin: 0 auto;
+    /* box-shadow: --; */
+}
+
+.boxShadow {
+    box-shadow: 0px 0px 20px 5px #276873;
+}
+
+#numberOfRoundsAdded {
+    background: var(--secundary_color_light);
+    border: var(--border_light);
+    border-radius: var(--border_radius);
+    color: var(--font_color_dark);
+}
+
+
+#numberOfRoundsAdded {
+    animation: addContentNumberHighlight 0.5s 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes addContentNumberHighlight {
+    0% {
+
+        background-color: var(--secundary_color_light);
+    }
+
+    40% {
+        background-color: var(--secundary_color_dark);
+        border: var(--border_dark);
+        color: var(--font_color_light);
+    }
+
+    60% {
+        background-color: var(--secundary_color_dark);
+        border: var(--border_dark);
+        color: var(--font_color_light);
+    }
+
+    100% {
+        background-color: var(--secundary_color_light);
+    }
+}
+
+.arrowAnimation {
+    animation: animationArrow 0s 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes animationArrow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
